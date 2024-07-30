@@ -23,14 +23,32 @@ public class MessageSenderImplTest {
 
     @Test
     public void testSendLocalMessage() {
+        String message = "Hello";
+        String country = "US";
+        String expected = "Hello, welcome!";
+
+        String actual = messageService.sendLocalMessage(message, country);
+
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testSendDefaultLocalMessage() {
+        String message = "Hello";
+        String expected = "Hello, welcome!";
+
+        String actual = messageService.sendLocalMessage(message, null);
+
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testSendUnknownCountryMessage() {
+        String message = "Hello";
+        String country = "ZZ";
+        String expected = "Hello";
 
+        String actual = messageService.sendLocalMessage(message, country);
+
+        assertEquals(expected, actual);
     }
-}
